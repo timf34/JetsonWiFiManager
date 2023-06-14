@@ -41,5 +41,6 @@ sudo sed -i 's|#DAEMON_CONF=""|DAEMON_CONF="/etc/hostapd/hostapd.conf"|' /etc/de
 # start dnsmasq and hostapd
 # enable and start dnsmasq and hostapd
 sudo systemctl enable --now dnsmasq
-sudo systemctl enable --now hostapd
+sudo hostapd /etc/hostapd/hostapd.conf &
+
 
