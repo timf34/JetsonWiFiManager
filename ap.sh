@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # the interface of the access point
-AP_INTERFACE="wlan1"
-# the interface of the WiFi client
-WIFI_INTERFACE="wlan0"
+AP_INTERFACE="wlan0"
 # the SSID of the access point
 AP_SSID="JetsonAP"
 # the password of the access point
