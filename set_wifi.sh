@@ -4,12 +4,12 @@
 WIFI_INTERFACE="wlan0"
 
 # wait for the file to be created
-while [ ! -f /path/to/file ]; do
+while [ ! -f /tmp/wifi_credentials ]; do
     sleep 1
 done
 
 # read the SSID and password from the file
-readarray -t lines < /path/to/file
+readarray -t lines < /tmp/wifi_credentials
 SSID="${lines[0]}"
 PASSWORD="${lines[1]}"
 
