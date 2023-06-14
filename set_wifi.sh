@@ -13,5 +13,12 @@ readarray -t lines < /path/to/file
 SSID="${lines[0]}"
 PASSWORD="${lines[1]}"
 
-# create the WiFi connection
-nmcli dev wifi con "$SSID" password "$PASSWORD" ifname $WIFI_INTERFACE
+# try to connect to the WiFi network
+if nmcli dev wifi con "$SSID" password "$PASSWORD" ifname $WIFI_INTERFACE; then
+    # if successful, stop the access point and dnsmasq
+    sudo systemctl stop hostapd
+    sudo systemctl stop dnsmasq
+else
+    # if failed, remove the file so the access point is created on the next boot
+    rm /path/to/file
+fi
