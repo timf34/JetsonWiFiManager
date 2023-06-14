@@ -7,12 +7,19 @@ AP_SSID="JetsonAP"
 # the password of the access point
 AP_PASSWORD="password"
 
-# stop NetworkManager
-sudo systemctl stop NetworkManager
+# check if NetworkManager is running
+if systemctl is-active --quiet NetworkManager; then
+  # stop NetworkManager
+  sudo systemctl stop NetworkManager
+fi
 
-# configure the access point
-sudo ip link set $AP_INTERFACE down
-sudo ip addr flush dev $AP_INTERFACE
+# check if wlan0 is up
+if ip link show $AP_INTERFACE | grep -q "UP"; then
+  # configure the access point
+  sudo ip link set $AP_INTERFACE down
+  sudo ip addr flush dev $AP_INTERFACE
+fi
+
 sudo ip link set $AP_INTERFACE up
 sudo ip addr add 192.168.42.1/24 dev $AP_INTERFACE
 
@@ -38,9 +45,16 @@ rsn_pairwise=CCMP" | sudo tee /etc/hostapd/hostapd.conf
 # ensure hostapd uses the correct config file
 sudo sed -i 's|#DAEMON_CONF=""|DAEMON_CONF="/etc/hostapd/hostapd.conf"|' /etc/default/hostapd
 
+# check if dnsmasq is running
+if systemctl is-active --quiet dnsmasq; then
+  sudo systemctl stop dnsmasq
+fi
+
+# check if hostapd is running
+if systemctl is-active --quiet hostapd; then
+  sudo pkill hostapd
+fi
+
 # start dnsmasq and hostapd
-# enable and start dnsmasq and hostapd
 sudo systemctl enable --now dnsmasq
 sudo hostapd /etc/hostapd/hostapd.conf &
-
-
