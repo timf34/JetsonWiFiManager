@@ -39,5 +39,7 @@ rsn_pairwise=CCMP" | sudo tee /etc/hostapd/hostapd.conf
 sudo sed -i 's|#DAEMON_CONF=""|DAEMON_CONF="/etc/hostapd/hostapd.conf"|' /etc/default/hostapd
 
 # start dnsmasq and hostapd
-sudo systemctl start dnsmasq
-sudo systemctl start hostapd
+# enable and start dnsmasq and hostapd
+sudo systemctl enable --now dnsmasq
+sudo systemctl enable --now hostapd
+
