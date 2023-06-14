@@ -18,7 +18,7 @@ sudo ip addr add 192.168.42.1/24 dev $AP_INTERFACE
 
 # configure dnsmasq
 echo -e "interface=$AP_INTERFACE\n\
-dhcp-range=192.168.42.10,192.168.42.50,255.255.255.0,12h" | sudo tee /etc/dnsmasq.conf > /dev/null
+dhcp-range=192.168.42.10,192.168.42.50,255.255.255.0,12h" | sudo tee /etc/dnsmasq.conf
 
 # configure hostapd
 echo -e "interface=$AP_INTERFACE\n\
@@ -33,7 +33,10 @@ wpa=2\n\
 wpa_passphrase=$AP_PASSWORD\n\
 wpa_key_mgmt=WPA-PSK\n\
 wpa_pairwise=TKIP\n\
-rsn_pairwise=CCMP" | sudo tee /etc/hostapd/hostapd.conf > /dev/null
+rsn_pairwise=CCMP" | sudo tee /etc/hostapd/hostapd.conf
+
+# ensure hostapd uses the correct config file
+sudo sed -i 's|#DAEMON_CONF=""|DAEMON_CONF="/etc/hostapd/hostapd.conf"|' /etc/default/hostapd
 
 # start dnsmasq and hostapd
 sudo systemctl start dnsmasq
