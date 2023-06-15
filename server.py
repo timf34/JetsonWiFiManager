@@ -1,3 +1,5 @@
+import time
+
 from flask import Flask, request
 import os
 
@@ -43,8 +45,15 @@ def connect_to_wifi() -> None:
     os.system('sudo systemctl stop dnsmasq')
     os.system('sudo systemctl stop hostapd')
 
+    time.sleep(10)
+
     # restart NetworkManager
     os.system('sudo systemctl start NetworkManager')
+    os.system('nmcli device wifi list')
+
+    time.sleep(10)
+
+    os.system('nmcli device wifi list')
 
     # try to connect to WiFi
     os.system(f'nmcli d wifi connect {ssid} password {password}')
