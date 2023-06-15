@@ -1,23 +1,36 @@
-from flask import Flask, render_template, request
+from flask import Flask, request
 import os
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+def index() -> str:
+    return '''
+            <html>
+            <head>
+                <title>FOV WiFi</title>
+            </head>
+            <body>
+                <h1>FOV WiFi Configuration</h1>
+                <form method="POST">
+                    SSID: <input type="text" name="ssid"><br>
+                    Password: <input type="password" name="password"><br>
+                    <input type="submit">
+                </form>
+            </body>
+            </html>
+        '''
 
 
-@app.route('/postmethod', methods = ['POST'])
-def get_post_javascript_data() -> str:
-    jsdata = request.form['javascript_data']
-    ssid, password = jsdata.split("|")
+@app.route('/', methods=['POST'])
+def post() -> str:
+    ssid = request.form.get('ssid')
+    password = request.form.get('password')
     with open('wifi_config.txt', 'w') as f:
         f.write(ssid + "\n" + password)
-
     connect_to_wifi()
-    return jsdata
+    return 'SSID and password submitted. Attempting to connect...'
 
 
 def connect_to_wifi() -> None:
