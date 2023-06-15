@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <title>WiFi Configuration</title>
+    </head>
+    <body>
+        <h1>Enter WiFi Information</h1>
+        <form id="wifi-form">
+            SSID:<br>
+            <input type="text" id="ssid"><br>
+            Password:<br>
+            <input type="password" id="password"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <script type="text/javascript">
+            $('#wifi-form').on('submit', function(e) {
+                e.preventDefault(); // prevent page refresh
+                var ssid = $('#ssid').val();
+                var password = $('#password').val();
+                var data = ssid + "|" + password;
+                $.ajax({
+                    type: "POST",
+                    url: "/postmethod",
+                    data: { javascript_data: data }
+                });
+            });
+        </script>
+    </body>
+</html>
