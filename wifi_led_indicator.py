@@ -4,7 +4,7 @@ import subprocess
 
 # Set up GPIO mode and pin
 GPIO.setmode(GPIO.BOARD)
-LED_pin = 31
+LED_pin = 29
 
 # Set up button pin as input
 GPIO.setup(LED_pin, GPIO.OUT)
