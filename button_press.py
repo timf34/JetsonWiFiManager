@@ -4,7 +4,7 @@ import os
 
 # Set up GPIO mode and pin
 GPIO.setmode(GPIO.BOARD)
-button_pin = 37
+button_pin = 31
 
 # Set up button pin as input
 GPIO.setup(button_pin, GPIO.IN)
