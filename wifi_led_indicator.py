@@ -35,10 +35,10 @@ def flash_LED() -> None:
     while True:
         GPIO.output(LED_pin, GPIO.LOW)
         print("low")
-        time.sleep(2)
+        time.sleep(0.5)
         GPIO.output(LED_pin, GPIO.HIGH)
         print("high")
-        time.sleep(3)
+        time.sleep(0.5)
         GPIO.output(LED_pin, GPIO.LOW)
 
 
