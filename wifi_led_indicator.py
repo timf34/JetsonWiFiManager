@@ -34,14 +34,13 @@ def check_internet_connection() -> bool:
 
 def flash_LED() -> None:
     # LED should flash gently
-    while True:
-        GPIO.output(LED_pin, GPIO.LOW)
-        print("low")
-        time.sleep(0.5)
-        GPIO.output(LED_pin, GPIO.HIGH)
-        print("high")
-        time.sleep(0.5)
-        GPIO.output(LED_pin, GPIO.LOW)
+    GPIO.output(LED_pin, GPIO.LOW)
+    print("low")
+    time.sleep(0.5)
+    GPIO.output(LED_pin, GPIO.HIGH)
+    print("high")
+    time.sleep(0.5)
+    GPIO.output(LED_pin, GPIO.LOW)
 
 
 try:
@@ -56,6 +55,7 @@ try:
         else:
             # Network Manager is off, LED should flash gently
             flash_LED()
+        time.sleep(0.1)
 
 except KeyboardInterrupt:
     GPIO.cleanup()
