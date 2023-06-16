@@ -1,0 +1,11 @@
+[Unit]
+Description=Run script on button press
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 button_press.py
+WorkingDirectory=/home/orin1/Desktop/JetsonWiFiManager/
+
+[Install]
+WantedBy=multi-user.target
