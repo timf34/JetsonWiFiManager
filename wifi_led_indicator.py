@@ -25,8 +25,10 @@ def check_internet_connection() -> bool:
     try:
         # Try to reach out to Google's primary DNS server to check for connectivity.
         subprocess.check_output(['ping', '-c', '1', '8.8.8.8'])
+        print("connected to internet")
         return True
     except subprocess.CalledProcessError:
+        print("not connected to internet")
         return False
 
 
