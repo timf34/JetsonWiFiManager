@@ -1,0 +1,11 @@
+[Unit]
+Description=LED Indicator service
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/python3 wifi_led_indicator.py
+WorkingDirectory=/home/orin1/Desktop/JetsonWiFiManager/
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

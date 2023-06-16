@@ -55,7 +55,7 @@ try:
         else:
             # Network Manager is off, LED should flash gently
             flash_LED()
-        time.sleep(0.1)
+        time.sleep(1)
 
 except KeyboardInterrupt:
     GPIO.cleanup()
