@@ -22,7 +22,6 @@ After=network.target
 [Service]
 ExecStart=/home/timf34/Desktop/JetsonWiFiManager/configuring_jetson/git_pull.sh
 Restart=on-failure
-User=tim34
 
 [Install]
 WantedBy=multi-user.target" | sudo tee /etc/systemd/system/gitpull.service
