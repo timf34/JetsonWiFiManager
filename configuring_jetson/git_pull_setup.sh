@@ -7,6 +7,9 @@ sudo chmod -R 777 /home/timf34/Desktop/FOVCamerasWebApp
 # Make pull_git.sh executable
 chmod +x /home/timf34/Desktop/JetsonWiFiManager/configuring_jetson/git_pull.sh
 
+# Add the directory to the list of safe directories in Git's configuration
+sudo git config --system --add safe.directory '*'
+
 # Create a systemd service
 echo "[Unit]
 Description=Pull git on network connectivity
