@@ -11,9 +11,15 @@ function check_internet() {
     fi
 }
 
-# the function to pull the git repo
+# the function to pull the FOVCamerasWebApp git repo
 function git_pull() {
     cd /home/timf34/Desktop/FOVCamerasWebApp
+    git pull
+}
+
+# the function to pull the JetsonWiFiManager git repo
+function git_pull_jwm() {
+    cd /home/timf34/Desktop/JetsonWiFiManager
     git pull
 }
 
@@ -26,12 +32,14 @@ done
 
 # Pull when device is initially connected to the internet
 git_pull
+git_pull_jwm
 
 # check for updates every 1 hour
 while true; do
     check_internet
     if [ $? -eq 0 ]; then
         git_pull
+        git_pull_jwm
     fi
     sleep 3600
 done

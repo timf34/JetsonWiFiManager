@@ -1,8 +1,12 @@
 #!/bin/bash
 
-# Change ownership and permissions of the Git repository
+# Change ownership and permissions of the FOVCamerasWebApp Git repository
 sudo chown -R timf34:timf34 /home/timf34/Desktop/FOVCamerasWebApp
 sudo chmod -R 777 /home/timf34/Desktop/FOVCamerasWebApp
+
+# Change ownership and permissions of the JetsonWiFiManager Git repository
+sudo chown -R timf34:timf34 /home/timf34/Desktop/JetsonWiFiManager
+sudo chmod -R 777 /home/timf34/Desktop/JetsonWiFiManager
 
 # Make pull_git.sh executable
 chmod +x /home/timf34/Desktop/JetsonWiFiManager/configuring_jetson/git_pull.sh
@@ -18,6 +22,7 @@ After=network.target
 [Service]
 ExecStart=/home/timf34/Desktop/JetsonWiFiManager/configuring_jetson/git_pull.sh
 Restart=on-failure
+User=tim34
 
 [Install]
 WantedBy=multi-user.target" | sudo tee /etc/systemd/system/gitpull.service
