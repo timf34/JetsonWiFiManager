@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Make pull_git.sh executable
-chmod +x /home/timf34/Desktop/JetsonWiFiManager/configuring_jetson/pull_git.sh
+chmod +x /home/timf34/Desktop/JetsonWiFiManager/configuring_jetson/git_pull.sh
 
 # Create a systemd service
 echo "[Unit]
@@ -9,7 +9,7 @@ Description=Pull git on network connectivity
 After=network.target
 
 [Service]
-ExecStart=/home/timf34/Desktop/JetsonWiFiManager/configuring_jetson/pull_git.sh
+ExecStart=/home/timf34/Desktop/JetsonWiFiManager/configuring_jetson/git_pull.sh
 Restart=on-failure
 
 [Install]
