@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Change ownership and permissions of the Git repository
+sudo chown -R timf34:timf34 /home/timf34/Desktop/FOVCamerasWebApp
+sudo chmod -R 777 /home/timf34/Desktop/FOVCamerasWebApp
+
 # Make pull_git.sh executable
 chmod +x /home/timf34/Desktop/JetsonWiFiManager/configuring_jetson/git_pull.sh
 
