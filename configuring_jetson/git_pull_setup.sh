@@ -5,11 +5,11 @@ USER_NAME="timf34"
 
 # Change ownership and permissions of the FOVCamerasWebApp Git repository
 sudo chown -R $USER_NAME:$USER_NAME /home/$USER_NAME/Desktop/FOVCamerasWebApp
-sudo chmod -R 777 /home/$USER_NAME/Desktop/FOVCamerasWebApp
+sudo chmod -R 755 /home/$USER_NAME/Desktop/FOVCamerasWebApp
 
 # Change ownership and permissions of the JetsonWiFiManager Git repository
 sudo chown -R $USER_NAME:$USER_NAME /home/$USER_NAME/Desktop/JetsonWiFiManager
-sudo chmod -R 777 /home/$USER_NAME/Desktop/JetsonWiFiManager
+sudo chmod -R 755 /home/$USER_NAME/Desktop/JetsonWiFiManager
 
 # Make pull_git.sh executable
 chmod +x /home/$USER_NAME/Desktop/JetsonWiFiManager/configuring_jetson/git_pull.sh
