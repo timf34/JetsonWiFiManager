@@ -16,12 +16,14 @@ function check_internet() {
 # the function to pull the FOVCamerasWebApp git repo
 function git_pull() {
     cd /home/$USER_NAME/Desktop/FOVCamerasWebApp
+    git stash
     git pull
 }
 
 # the function to pull the JetsonWiFiManager git repo
 function git_pull_jwm() {
     cd /home/$USER_NAME/Desktop/JetsonWiFiManager
+    git stash
     git pull
 }
 
