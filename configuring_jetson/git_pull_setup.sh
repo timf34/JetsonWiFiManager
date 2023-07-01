@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Provide user name as an argument while running this script
-USER_NAME=timf34
+USER_NAME="timf34"
 
 # Change ownership and permissions of the FOVCamerasWebApp Git repository
 sudo chown -R $USER_NAME:$USER_NAME /home/$USER_NAME/Desktop/FOVCamerasWebApp
