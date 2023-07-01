@@ -23,6 +23,8 @@ Description=Pull git on network connectivity
 After=network.target
 
 [Service]
+User=$USER_NAME
+Group=$USER_NAME
 ExecStart=/home/$USER_NAME/Desktop/JetsonWiFiManager/configuring_jetson/git_pull.sh
 Restart=on-failure
 
