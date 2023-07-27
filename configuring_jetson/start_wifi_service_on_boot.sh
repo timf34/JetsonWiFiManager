@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Unmask hostapd
+sudo systemctl unmask hostapd
+
 # define your script path
 SCRIPT_PATH="/home/tim/Desktop/JetsonWiFiManager/run_wifi.sh" # replace with your script's actual path
 
