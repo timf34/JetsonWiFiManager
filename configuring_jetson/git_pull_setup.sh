@@ -1,15 +1,18 @@
 #!/bin/bash
 
+# Provide user name as an argument while running this script
+USER_NAME="timf34"
+
 # Change ownership and permissions of the FOVCamerasWebApp Git repository
-sudo chown -R timf34:timf34 /home/timf34/Desktop/FOVCamerasWebApp
-sudo chmod -R 777 /home/timf34/Desktop/FOVCamerasWebApp
+sudo chown -R $USER_NAME:$USER_NAME /home/$USER_NAME/Desktop/FOVCamerasWebApp
+sudo chmod -R 755 /home/$USER_NAME/Desktop/FOVCamerasWebApp
 
 # Change ownership and permissions of the JetsonWiFiManager Git repository
-sudo chown -R timf34:timf34 /home/timf34/Desktop/JetsonWiFiManager
-sudo chmod -R 777 /home/timf34/Desktop/JetsonWiFiManager
+sudo chown -R $USER_NAME:$USER_NAME /home/$USER_NAME/Desktop/JetsonWiFiManager
+sudo chmod -R 755 /home/$USER_NAME/Desktop/JetsonWiFiManager
 
 # Make pull_git.sh executable
-chmod +x /home/timf34/Desktop/JetsonWiFiManager/configuring_jetson/git_pull.sh
+chmod +x /home/$USER_NAME/Desktop/JetsonWiFiManager/configuring_jetson/git_pull.sh
 
 # Add the directory to the list of safe directories in Git's configuration
 sudo git config --system --add safe.directory '*'
@@ -20,7 +23,9 @@ Description=Pull git on network connectivity
 After=network.target
 
 [Service]
-ExecStart=/home/timf34/Desktop/JetsonWiFiManager/configuring_jetson/git_pull.sh
+User=$USER_NAME
+Group=$USER_NAME
+ExecStart=/home/$USER_NAME/Desktop/JetsonWiFiManager/configuring_jetson/git_pull.sh
 Restart=on-failure
 
 [Install]

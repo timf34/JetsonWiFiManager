@@ -1,5 +1,7 @@
 #!/bin/bash
 
+USER_NAME="timf34"
+
 # the function to check the internet connection
 function check_internet() {
     wget -q --spider https://google.com
@@ -13,13 +15,15 @@ function check_internet() {
 
 # the function to pull the FOVCamerasWebApp git repo
 function git_pull() {
-    cd /home/timf34/Desktop/FOVCamerasWebApp
+    cd /home/$USER_NAME/Desktop/FOVCamerasWebApp
+    git stash
     git pull
 }
 
 # the function to pull the JetsonWiFiManager git repo
 function git_pull_jwm() {
-    cd /home/timf34/Desktop/JetsonWiFiManager
+    cd /home/$USER_NAME/Desktop/JetsonWiFiManager
+    git stash
     git pull
 }
 
