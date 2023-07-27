@@ -14,7 +14,7 @@ This project contains three scripts:
   - Runs a web server on the Jetson which allows us to input the SSID and password of the network we want to connect to
   - The Jetson will then connect to that network and the access point will be disabled
 
-Once connected to the AP, connect to the web server by going to `http://192.168.42.1`
+Once connected to the AP, connect to the web server by going to `http://192.168.42.1:80` from your laptop or other connected device!
 
 ### Running the scripts
 
