@@ -13,6 +13,7 @@ After=network.target
 
 [Service]
 ExecStart=/bin/bash $SCRIPT_PATH
+WorkingDirectory=/home/tim/Desktop/JetsonWiFiManager
 User=root
 Type=oneshot
 RemainAfterExit=yes
