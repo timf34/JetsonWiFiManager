@@ -17,6 +17,7 @@ After=network.target
 [Service]
 ExecStart=/bin/bash $SCRIPT_PATH
 WorkingDirectory=/home/tim/Desktop/JetsonWiFiManager
+Environment=PYTHONPATH=/home/tim/.local/lib/python3.6/site-packages/flask
 User=root
 Type=oneshot
 RemainAfterExit=yes
